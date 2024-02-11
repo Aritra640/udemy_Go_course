@@ -44,8 +44,8 @@ func (m *Repository) Home(w http.ResponseWriter, r *http.Request) {
 
 	//store ip address in sessions
 
-	// remoteIP := r.RemoteAddr
-	// m.App.Session.Put(r.Context(), "remote_ip", remoteIP)
+	remoteIP := r.RemoteAddr
+	m.App.Session.Put(r.Context(), "remote_ip", remoteIP)
 
 	render.RenderTemplate(w, "home.page.tmpl", &models.TemplateData{})
 }
@@ -55,8 +55,8 @@ func (m *Repository) About(w http.ResponseWriter, r *http.Request) {
 	stringmap := make(map[string]string)
 	stringmap["test"] = "Hello!"
 
-	// remoteIP := m.App.Session.GetString(r.Context(), "remote_ip")
-	// stringmap["remote_ip"] = remoteIP
+	remoteIP := m.App.Session.GetString(r.Context(), "remote_ip")
+	stringmap["remote_ip"] = remoteIP
 
 	render.RenderTemplate(w, "about.page.tmpl", &models.TemplateData{
 		StringMap: stringmap,
