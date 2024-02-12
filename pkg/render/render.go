@@ -76,7 +76,7 @@ func CreateTemplateCache() (map[string]*template.Template, error) {
 
 	cache := map[string]*template.Template{}
 	//get all files named *.page.tmpl
-	pages, err := filepath.Glob("/media/aritra/new_volume/Go_course/HTMLdemo/templates/*.page.tmpl")
+	pages, err := filepath.Glob("./templates/*.page.tmpl")
 	if err != nil {
 		return cache, err
 	}
